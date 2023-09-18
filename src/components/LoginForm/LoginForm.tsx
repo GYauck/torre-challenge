@@ -20,14 +20,16 @@ const LoginForm = () => {
 
   const handleLogin = async (/* e:any,  */ data: FormData) => {
     /* e.preventDefault(); */
-    const res = await axios.post("/api/users/login", {
+    console.log("first")
+    const res = await axios.post("http://localhost:8080/api/users/login", {
       email: data.email,
       password: data.password,
     });
     localStorage.setItem("token", res.data.user.token);
-    const user = await axios.get("/api/users/me", {
+    const user = await axios.get("http://localhost:8080/api/users/me", {
       headers: { Authorization: `Bearer ${token}` },
     });
+    console.log("first")
     navigate("/");
     return user.data;
   };
@@ -54,7 +56,7 @@ const LoginForm = () => {
               size="lg"
               label="Email"
               {...register("email", { required: true })}
-              crossOrigin={false}
+              crossOrigin="false"
             />
             {errors.email?.type === "required" && (
               <span className="text-red-500">* Email field cant be empty </span>
@@ -64,7 +66,7 @@ const LoginForm = () => {
               size="lg"
               label="Password"
               {...register("password", { required: true })}
-              crossOrigin={false}
+              crossOrigin="false"
             />
             {errors.password?.type === "minLength" && (
               <span className="text-red-500">
@@ -72,7 +74,7 @@ const LoginForm = () => {
               </span>
             )}
           </div>
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" fullWidth type="submit">
             Sign In
           </Button>
 

@@ -4,7 +4,8 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 interface FormData {
-  firstName: string;
+  name: string;
+  lastname: string;
   email: string;
   password: any;
 }
@@ -21,6 +22,7 @@ const RegisterForm = () => {
   const onSubmit = (data: FieldValues) => {
     axios.post("http://localhost:8080/api/users/register", {
       name: data.name,
+      lastname: data.lastname,
       email: data.email,
       password: data.password,
     })
@@ -49,17 +51,26 @@ const RegisterForm = () => {
             <Input
               size="lg"
               label="Name"
-              {...register("firstName", { required: true })}
-              crossOrigin={false}
+              {...register("name", { required: true })}
+              crossOrigin="false"
             />
-            {errors.firstName?.type === "required" && (
+            {errors.name?.type === "required" && (
               <span className="text-red-500">* Name field cant be empty </span>
+            )}
+            <Input
+              size="lg"
+              label="LastName"
+              {...register("lastname", { required: true })}
+              crossOrigin="false"
+            />
+            {errors.lastname?.type === "required" && (
+              <span className="text-red-500">* Last Name field cant be empty </span>
             )}
             <Input
               size="lg"
               label="Email"
               {...register("email", { required: true })}
-              crossOrigin={false}
+              crossOrigin="false"
             />
             {errors.email?.type === "required" && (
               <span className="text-red-500">* Email field cant be empty </span>
@@ -69,7 +80,7 @@ const RegisterForm = () => {
               size="lg"
               label="Password"
               {...register("password", { required: true })}
-              crossOrigin={false}
+              crossOrigin="false"
             />
             {errors.password?.type === "minLength" && (
               <span className="text-red-500">
@@ -77,7 +88,7 @@ const RegisterForm = () => {
               </span>
             )}
           </div>
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" fullWidth type="submit">
             Register
           </Button>
 
