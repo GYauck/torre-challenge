@@ -53,7 +53,7 @@ const SearchBar: React.FC<SearchBoxProps> = ({ setSearchResult }) => {
     >
       <MdPersonSearch size={35} />
       <Input
-        crossOrigin={false}
+        crossOrigin="false"
         label="Search people by name"
         type="search"
         value={query}
