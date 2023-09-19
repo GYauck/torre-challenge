@@ -8,7 +8,7 @@ const Home = () => {
  
   return (
     <>
-    <div className="flex flex-col min-h-screen justify-center items-center w-screen bg-white">
+    <div className="flex flex-col min-h-screen justify-center items-center w-screen bg-black">
       <SearchBar setSearchResult={setSearchResult} />
       <div>
       {searchResult.map((element, index)=> {

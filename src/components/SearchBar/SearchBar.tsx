@@ -51,7 +51,7 @@ const SearchBar: React.FC<SearchBoxProps> = ({ setSearchResult }) => {
       onSubmit={handleSubmit}
       className="flex"
     >
-      <MdPersonSearch size={35} />
+      <MdPersonSearch size={35} color={"yellow"} />
       <Input
         crossOrigin="false"
         label="Search people by name"
@@ -60,7 +60,7 @@ const SearchBar: React.FC<SearchBoxProps> = ({ setSearchResult }) => {
         onChange={changeQuery}
         onKeyDown={handleKeyDown}
       />
-      <button type="submit">Submit</button>
+      <button type="submit" className="text-yellow-400">Submit</button>
     </form>
   );
 };
