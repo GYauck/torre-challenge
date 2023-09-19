@@ -21,23 +21,27 @@ const LoginForm = () => {
   const handleLogin = async (/* e:any,  */ data: FormData) => {
     /* e.preventDefault(); */
     try {
-      const res = await axios.post("http://localhost:8080/api/users/login", {
-      email: data.email,
-      password: data.password,
-    });
-    localStorage.setItem("token", res.data.user.token);
-    const user = await axios.get("http://localhost:8080/api/users/me", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    console.log("first")
-    
-    return user.data;
+      const res = await axios.post(
+        "https://torre-challenge-server-production.up.railway.app/api/users/login",
+        {
+          email: data.email,
+          password: data.password,
+        }
+      );
+      localStorage.setItem("token", res.data.user.token);
+      const user = await axios.get(
+        "https://torre-challenge-server-production.up.railway.app/api/users/me",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      return user.data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
       navigate("/");
     }
-    
   };
 
   return (

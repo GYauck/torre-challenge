@@ -20,7 +20,7 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: FieldValues) => {
-    axios.post("http://localhost:8080/api/users/register", {
+    axios.post("https://torre-challenge-server-production.up.railway.app/api/users/register", {
       name: data.name,
       lastname: data.lastname,
       email: data.email,

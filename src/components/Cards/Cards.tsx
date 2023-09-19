@@ -6,25 +6,24 @@ interface CardsProps {
 }
 
 const Cards: React.FC<CardsProps> = ({ parsedElement }) => {
-
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
 
   const addFavourite = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/favourites/addFavourite",
+        "https://torre-challenge-server-production.up.railway.app/api/favourites/addFavourite",
         {
           ggId: parsedElement.ggId,
           name: parsedElement.name,
           picture: parsedElement.imageUrl,
           professionalHeadline: parsedElement.professionalHeadline,
           verified: parsedElement.verified,
-        },{
-          headers: {Authorization: `Bearer ${token}`}
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("first")
-      return res.data
+      return res.data;
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +50,10 @@ const Cards: React.FC<CardsProps> = ({ parsedElement }) => {
         <h2 className="text-gray-500">{parsedElement.professionalHeadline}</h2>
       </div>
       <div className="flex items-end h-full pb-3">
-        <button onClick={addFavourite} className="rounded-3xl border-2 h-10 mr-5 bg-lime-600">
+        <button
+          onClick={addFavourite}
+          className="rounded-3xl border-2 h-10 mr-5 bg-lime-600"
+        >
           ADD FAVOURITE
         </button>
         <button className="rounded-3xl border-2 h-10 bg-lime-600">GNOME</button>

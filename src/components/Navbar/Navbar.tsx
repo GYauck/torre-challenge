@@ -5,18 +5,18 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const token = localStorage.getItem("token");
 
-  const checkLogin = async () => {
+ /*  const checkLogin = async () => {
     try {
-      await axios.get("http://localhost:8080/api/users/me", {
+      await axios.get("https://torre-challenge-server-production.up.railway.app/api/users/me", {
         headers: { Authorization: `Bearer${token}` },
       });
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8080/api/users/logout");
+      await axios.post("https://torre-challenge-server-production.up.railway.app/api/users/logout");
       localStorage.clear();
       window.location.reload();
     } catch (error) {
@@ -24,9 +24,9 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
+ /*  useEffect(() => {
     checkLogin;
-  }, []);
+  }, []); */
 
   return (
     <div className="bg-lime-600 w-screen h-10 flex justify-evenly items-center">
