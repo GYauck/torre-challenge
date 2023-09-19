@@ -1,6 +1,6 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import axios from "axios";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 interface FormData {
@@ -20,8 +20,8 @@ const LoginForm = () => {
 
   const handleLogin = async (/* e:any,  */ data: FormData) => {
     /* e.preventDefault(); */
-    console.log("first")
-    const res = await axios.post("http://localhost:8080/api/users/login", {
+    try {
+      const res = await axios.post("http://localhost:8080/api/users/login", {
       email: data.email,
       password: data.password,
     });
@@ -30,8 +30,14 @@ const LoginForm = () => {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("first")
-    navigate("/");
+    
     return user.data;
+    } catch (error) {
+      console.log(error)
+    } finally {
+      navigate("/");
+    }
+    
   };
 
   return (
