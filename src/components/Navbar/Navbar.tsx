@@ -32,6 +32,7 @@ const Navbar = () => {
     <div className="bg-lime-600 w-screen h-10 flex justify-evenly items-center">
       {token ? (
         <>
+          <NavLink to={"/"}>HOME</NavLink>
           <NavLink to={"/favourites"}>FAVOURITES</NavLink>
           <button onClick={handleLogout} className="">
             LOGOUT
