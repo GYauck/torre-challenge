@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
 
-    const token = localStorage.getItem("token")
-    const navigate = useNavigate();
   const checkLogin = async () => {
     try {
       await axios.get("http://localhost:8080/api/users/me", {
@@ -31,21 +30,16 @@ const Navbar = () => {
 
   return (
     <div className="bg-lime-600 w-screen h-10 flex justify-evenly items-center">
-        {token? (
-            <>
-            <NavLink to={"/favourites"}>
-            FAVOURITES
-            </NavLink>
+      {token ? (
+        <>
+          <NavLink to={"/favourites"}>FAVOURITES</NavLink>
           <button onClick={handleLogout} className="">
             LOGOUT
           </button>
-          </>
-        ) : (
-            <NavLink to={"/login"}>
-            LOG IN
-            </NavLink>
-        )}
-      
+        </>
+      ) : (
+        <NavLink to={"/login"}>LOG IN</NavLink>
+      )}
     </div>
   );
 };
