@@ -23,7 +23,7 @@ const Favourites = () => {
 
   const removeFavourite = async (favouriteId: any) => {
     try {
-      const res = await axios.post(
+      await axios.post(
         `https://torre-challenge-server-production.up.railway.app/api/favourites/removeFavourite/${favouriteId}`,
         null,
         {
@@ -45,7 +45,7 @@ const Favourites = () => {
   return (
     <>
       <div className="">
-        {favourites.map((favourite: any, index) => (
+        {favourites.map((favourite: any) => (
           <div className="flex flex-col  justify-center items-center  bg-black">
             <div className="flex justify-evenly rounded-2xl w-1/2 bg-gray-800 mb-4 h-40">
               <div className="mr-6 mt-4">
