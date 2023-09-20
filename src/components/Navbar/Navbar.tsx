@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
